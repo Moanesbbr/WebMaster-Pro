@@ -1,77 +1,65 @@
 # NetMaster Pro
 
-A modern, modular suite of network tools and utilities with a beautiful interface. **NetMaster Pro is designed to eventually control and manage everything in your network—but in this first release, only the WiFi to QR tool is available.**
+**NetMaster Pro** is an open-source, extensible suite for advanced network management and control. Designed for professionals and enthusiasts, it provides a unified, modern interface to monitor, secure, and manage your network. More modules and features are coming soon.
 
-## Features (Current Version)
+---
 
-- Sleek, user-friendly interface
-- Modular design: launch different network tools from a single app
-- **WiFi to QR**: Generate QR codes for your WiFi networks (scan to connect instantly)
-- More tools coming soon!
+## Key Features
+
+### 🌐 Network Device Manager
+
+- **Network Scanning:** Discover all devices on your local network, including IP, MAC, hostname, vendor, and status.
+- **Device Monitoring:** View real-time (simulated) bandwidth usage for each device.
+- **Device Blocking/Unblocking:** Instantly block or unblock any device (except your own) using firewall rules (Windows) or iptables (Linux, requires admin privileges).
+- **Bandwidth Limiting:** UI for setting per-device download/upload limits (placeholder in this version).
+- **Bulk Actions:** Block or unblock all devices except your own with a single click.
+- **Export Device List:** Export the full device list to text or CSV for auditing or reporting.
+- **Context Menu:** Right-click any device for quick actions (monitor, block, unblock, limit bandwidth, refresh info).
+- **Modern UI:** Professional, dark-themed interface with real-time updates.
+
+### 📶 WiFi to QR
+
+- **QR Code Generation:** Instantly generate QR codes for your WiFi networks, including passwords.
+- **Easy Sharing:** Scan the QR code with your phone to connect instantly—no typing required.
+- **Cross-Platform:** Works on Windows, Linux, and macOS (best experience on Windows).
+
+---
 
 ## Vision & Roadmap
 
-NetMaster Pro aims to become your all-in-one network control center, with planned features such as:
+NetMaster Pro aims to become the all-in-one control center for your network, with planned features such as:
 
-- Network device management
-- Bandwidth monitoring
+- Advanced device management and automation
+- Bandwidth and traffic analytics
 - Security and diagnostics tools
-- And much more!
+- Integration with smart home and IoT devices
+- And much more
 
-For now, enjoy the WiFi to QR tool and stay tuned for future updates.
+---
 
-## Requirements
+## Getting Started
 
-- Python 3.8+
-- pip (Python package manager)
-- The following Python packages:
-  - tkinter (usually included with Python)
-  - pillow
-  - qrcode
-
-## Installation
-
-1. Clone this repository:
-   ```bash
-   git clone https://github.com/yourusername/netmasterpro.git
-   cd netmasterpro
-   ```
-2. Install dependencies:
+1. **Install Python 3.8+** and ensure `pip` is available.
+2. **Install dependencies:**
    ```bash
    pip install -r requirements.txt
    ```
+3. **Launch the application:**
+   ```bash
+   python wifitoqr.py
+   # or
+   python main_interface.py
+   ```
 
-## Usage
+> **Note:** Some features (like device blocking) require administrator/root privileges.
 
-### Run from source
+---
 
-```bash
-python wifitoqr.py
-```
+## Open Source & Contributing
 
-or
+NetMaster Pro is open source and welcomes contributions from the community. Whether you want to add new modules, improve the UI, or help with documentation, your input is valued. Please open issues or pull requests to get involved.
 
-```bash
-python main_interface.py
-```
-
-### Build Windows EXE
-
-To create a standalone Windows executable with a custom icon:
-
-```bash
-pip install pyinstaller
-pyinstaller --onefile --windowed --icon=assets/icon.ico --name=netmasterpro wifitoqr.py
-```
-
-The EXE will be in the `dist/` folder.
-
-## Notes
-
-- The WiFi to QR tool can retrieve WiFi passwords for saved networks (best on Windows).
-- On Linux/macOS, password retrieval may require extra permissions or manual entry.
-- The app icon is set via `assets/icon.ico`.
-- More network tools will be added in future updates!
+---
 
 ## License
 
@@ -79,4 +67,4 @@ MIT License
 
 ---
 
-Made with ❤️ for easy networking!
+NetMaster Pro — Professional tools for professional networks.

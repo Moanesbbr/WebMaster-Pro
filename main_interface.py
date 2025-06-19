@@ -1,6 +1,7 @@
 import tkinter as tk
 from tkinter import ttk, messagebox
 from PIL import Image, ImageTk
+from network_manager import show_network_manager
 import os
 import sys
 
@@ -13,9 +14,15 @@ class MainInterface:
     def setup_main_window(self):
         """Configure the main window"""
         self.root.title("NetMaster Pro")
-        self.root.geometry("600x700")
+        screen_width = self.root.winfo_screenwidth()
+        screen_height = self.root.winfo_screenheight()
+
+        window_width = int(screen_width * 0.9)
+        window_height = int(screen_height * 0.85)
+
+        self.root.geometry(f"{window_width}x{window_height}")
+        self.root.resizable(True, True)  # Allow resizing if desired
         self.root.configure(bg="#1a1a1a")
-        self.root.resizable(False, False)
         
         # Center window on screen
         self.center_window()
@@ -136,7 +143,14 @@ class MainInterface:
             self.launch_wifi_to_qr,
             row=0, col=0
         )
-        
+        self.create_tool_card(
+            tools_container,
+            "🌐 Device Manager",
+            "Scan, monitor and control devices\non your local network",
+            "devices.png",  # use a valid icon file or None
+            self.launch_network_manager,
+            row=0, col=1
+        )
         # Placeholder for future tools
         self.create_tool_card(
             tools_container,
@@ -144,7 +158,7 @@ class MainInterface:
             "Additional network utilities\nComing soon...",
             None,
             lambda: messagebox.showinfo("Coming Soon", "More tools will be added in future updates!"),
-            row=0, col=1,
+            row=0, col=2,
             disabled=True
         )
     
@@ -319,6 +333,23 @@ class MainInterface:
                 "Error",
                 f"Failed to launch WiFi to QR tool:\n{str(e)}"
             )
+            
+    def launch_network_manager(self):
+        """Launch the Network Device Manager module"""
+        try:
+            import network_manager
+            network_manager.show_network_manager(self.root, self.show_main_interface)
+        except ImportError as e:
+            messagebox.showerror(
+                "Module Error",
+                f"Failed to load Network Device Manager module:\n{str(e)}\n\nPlease ensure network_manager.py is in the same directory."
+            )
+        except Exception as e:
+            messagebox.showerror(
+                "Error",
+                f"Failed to launch Network Device Manager:\n{str(e)}"
+            )
+
     
     def show_main_interface(self):
         """Return to main interface"""
