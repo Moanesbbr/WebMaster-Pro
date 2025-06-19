@@ -9,7 +9,7 @@ exclude =
     env,
     .env
 ignore = 
-    E203,  # whitespace before ':'
-    W503,  # line break before binary operator
-    F401,  # imported but unused (for __init__.py files)
-    E722   # do not use bare except 
+    E203,
+    W503,
+    F401,
+    E722 
