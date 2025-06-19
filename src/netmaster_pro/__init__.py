@@ -6,7 +6,7 @@ advanced device monitoring, WiFi QR code generation, and network security featur
 """
 
 __version__ = "1.0.0"
-__author__ = "NetMaster Pro Team"
+__author__ = "Moanes BBR"
 __description__ = "Professional Network Management Suite"
 
 from .core.network_manager import NetworkManager
