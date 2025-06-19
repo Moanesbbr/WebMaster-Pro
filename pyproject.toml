@@ -1,0 +1,107 @@
+[build-system]
+requires = ["setuptools>=45", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "netmaster-pro"
+version = "1.0.0"
+description = "Professional Network Management Suite"
+readme = "README.md"
+license = {text = "MIT"}
+authors = [
+    {name = "Moanes BBR", email = "moanes.bbr@gmail.com"}
+]
+maintainers = [
+    {name = "Moanes BBR", email = "moanes.bbr@gmail.com"}
+]
+keywords = ["network", "management", "wifi", "qr", "monitoring", "security"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: System Administrators",
+    "Intended Audience :: Information Technology",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: System :: Networking",
+    "Topic :: System :: Systems Administration",
+    "Topic :: Utilities",
+]
+requires-python = ">=3.8"
+dependencies = [
+    "pillow",
+    "qrcode",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=6.0",
+    "flake8>=3.8",
+    "black>=21.0",
+    "mypy>=0.800",
+]
+
+[project.scripts]
+netmaster-pro = "netmaster_pro.ui.main_interface:run"
+
+[project.urls]
+Homepage = "https://github.com/moanesbbr/netmaster-pro"
+Documentation = "https://github.com/moanesbbr/netmaster-pro/wiki"
+Repository = "https://github.com/moanesbbr/netmaster-pro"
+"Bug Tracker" = "https://github.com/moanesbbr/netmaster-pro/issues"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+"netmaster_pro" = ["assets/*"]
+
+[tool.black]
+line-length = 88
+target-version = ['py38']
+include = '\.pyi?$'
+extend-exclude = '''
+/(
+  # directories
+  \.eggs
+  | \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | build
+  | dist
+)/
+'''
+
+[tool.flake8]
+max-line-length = 88
+extend-ignore = ["E203", "W503"]
+exclude = [
+    ".git",
+    "__pycache__",
+    ".venv",
+    "venv",
+    "env",
+    ".env",
+    "build",
+    "dist",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = [
+    "--strict-markers",
+    "--strict-config",
+    "--tb=short",
+]
+markers = [
+    "slow: marks tests as slow (deselect with '-m \"not slow\"')",
+    "integration: marks tests as integration tests",
+] 
