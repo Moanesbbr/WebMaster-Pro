@@ -10,13 +10,20 @@ import os
 
 # Read the README file
 def read_readme():
-    with open("README.md", "r", encoding="utf-8") as fh:
-        return fh.read()
+    try:
+        with open("README.md", "r", encoding="utf-8") as fh:
+            return fh.read()
+    except Exception:
+        return "Professional Network Management Suite"
 
 # Read requirements
 def read_requirements():
-    with open("requirements.txt", "r", encoding="utf-8") as fh:
-        return [line.strip() for line in fh if line.strip() and not line.startswith("#")]
+    try:
+        with open("requirements.txt", "r", encoding="utf-8") as fh:
+            return [line.strip() for line in fh if line.strip() and not line.startswith("#")]
+    except Exception:
+        # Fallback to hardcoded requirements if file can't be read
+        return ["pillow", "qrcode"]
 
 setup(
     name="netmaster-pro",
@@ -60,7 +67,7 @@ setup(
     },
     entry_points={
         "console_scripts": [
-            "netmaster-pro=netmaster_pro.ui.main_interface:main",
+            "netmaster-pro=netmaster_pro.ui.main_interface:run",
         ],
     },
     include_package_data=True,
