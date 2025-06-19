@@ -31,7 +31,7 @@ class MainInterface:
         
         # Set icon
         try:
-            icon_path = os.path.join("assets", "icon.ico")
+            icon_path = os.path.join(os.path.dirname(__file__), "..", "assets", "icon.ico")
             if os.path.exists(icon_path):
                 self.root.iconbitmap(icon_path)
         except Exception:
@@ -72,7 +72,7 @@ class MainInterface:
         
         # Logo
         try:
-            logo_path = os.path.join("assets", "icon.ico")
+            logo_path = os.path.join(os.path.dirname(__file__), "..", "assets", "icon.ico")
             if os.path.exists(logo_path):
                 logo_img = Image.open(logo_path)
                 # Convert ICO to RGBA if needed
@@ -193,7 +193,7 @@ class MainInterface:
         # Icon
         try:
             if icon_file and not disabled:
-                icon_path = os.path.join("assets", icon_file)
+                icon_path = os.path.join(os.path.dirname(__file__), "..", "assets", icon_file)
                 if os.path.exists(icon_path):
                     icon_img = Image.open(icon_path).resize((64, 64), Image.Resampling.LANCZOS)
                     icon_photo = ImageTk.PhotoImage(icon_img)

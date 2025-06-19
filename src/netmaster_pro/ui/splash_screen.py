@@ -25,7 +25,7 @@ class SplashScreen:
         self.center_window(width, height)
         
         try:
-            icon_path = os.path.join("assets", "icon.ico")
+            icon_path = os.path.join(os.path.dirname(__file__), "..", "assets", "icon.ico")
             if os.path.exists(icon_path):
                 self.root.iconbitmap(icon_path)
         except Exception:
@@ -77,7 +77,7 @@ class SplashScreen:
     
     def load_assets(self):
         try:
-            logo_path = os.path.join("assets", "icon.ico")
+            logo_path = os.path.join(os.path.dirname(__file__), "..", "assets", "icon.ico")
             if os.path.exists(logo_path):
                 logo_img = Image.open(logo_path)
                 if logo_img.mode != 'RGBA':

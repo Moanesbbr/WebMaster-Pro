@@ -26,7 +26,7 @@ class WiFiQRGenerator:
         
         # Try to set icon
         try:
-            self.root.iconbitmap(os.path.join("assets", "icon.ico"))
+            self.root.iconbitmap(os.path.join(os.path.dirname(__file__), "..", "assets", "icon.ico"))
         except Exception:
             pass
             
